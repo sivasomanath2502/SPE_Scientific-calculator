@@ -42,14 +42,10 @@ pipeline {
     post {
 
         success {
+            echo "SUCCESS BLOCK EXECUTED"
             emailext(
                 subject: "SUCCESS: Job ${env.JOB_NAME} Build #${env.BUILD_NUMBER}",
-                body: """Build succeeded.
-
-    Job: ${env.JOB_NAME}
-    Build Number: ${env.BUILD_NUMBER}
-    Console: ${env.BUILD_URL}
-    """,
+                body: "Build succeeded.\n${env.BUILD_URL}",
                 to: "sivasomanath25@gmail.com"
             )
         }
