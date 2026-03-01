@@ -1,0 +1,16 @@
+---
+- name: Deploy Scientific Calculator
+  hosts: all
+  gather_facts: no
+
+  tasks:
+
+    - name: Pull latest Docker image
+      command: docker pull sivasomanath2502/scientific-calculator:latest
+
+    - name: Stop existing container (if running)
+      command: docker rm -f scientific-calculator
+      ignore_errors: yes
+
+    - name: Run container
+      command: docker run -d -it --name scientific-calculator sivasomanath2502/scientific-calculator:latest
