@@ -38,11 +38,11 @@ pipeline {
                 sh 'ansible-playbook -i inventory.ini deploy.yml'
             }
         }
-        post {
-            always {
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                junit 'target/surefire-reports/*.xml'
-            }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            junit 'target/surefire-reports/*.xml'
         }
     }
 }
