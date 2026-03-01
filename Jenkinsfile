@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "scientific-calculator"
+        DOCKER_IMAGE = "sivasomanath2502/scientific-calculator"
     }
 
     stages {
@@ -28,7 +28,7 @@ pipeline {
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
                     sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                    sh 'docker push sivasomanath2502/scientific-calculator:latest'
+                    sh 'docker push $DOCKER_IMAGE:latest'
                 }
             }
         }
