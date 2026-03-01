@@ -56,4 +56,17 @@ public class CalculatorServiceTest {
             calculator.naturalLog(-5);
         });
     }
+
+    @Test
+    void testPowerPositive(){
+        assertEquals(16,calculator.power(4,2));
+    }
+    @Test
+    void testPowerZero(){
+        assertEquals(1,calculator.power(5,0));
+    }
+    @Test
+    void testPowerNegative(){
+        assertEquals(0.25,calculator.power(2,-2));
+    }
 }

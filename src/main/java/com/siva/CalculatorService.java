@@ -29,6 +29,6 @@ public class CalculatorService {
     }
     public double power(double base,double exponent)
     {
-        return 0;
+        return Math.pow(base,exponent);
     }
 }
