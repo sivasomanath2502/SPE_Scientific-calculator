@@ -69,4 +69,31 @@ public class CalculatorServiceTest {
     void testPowerNegative(){
         assertEquals(0.25,calculator.power(2,-2));
     }
+
+    @Test
+    void testAddition(){
+        assertEquals(8,calculator.add(5,3));
+    }
+
+    @Test
+    void testSubstraction(){
+        assertEquals(2,calculator.subtract(5,3));
+    }
+
+    @Test
+    void testMultiply(){
+        assertEquals(15,calculator.multiply(5,3));
+    }
+
+    @Test
+    void testDivision(){
+        assertEquals(2.0,calculator.divide(6,3),0.0001);
+    }
+
+    @Test
+    void testDivisionByZero(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.divide(5,0);
+        });
+    }
 }
