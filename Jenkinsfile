@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "sivasomanath2502/scientific-calculator"
+        DOCKER_IMAGE = "${env.DOCKER_USER}/scientific-calculator"
     }
 
     stages {
@@ -36,6 +36,12 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 sh 'ansible-playbook -i inventory.ini deploy.yml'
+            }
+        }
+        post {
+            always {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                junit 'target/surefire-reports/*.xml'
             }
         }
     }
