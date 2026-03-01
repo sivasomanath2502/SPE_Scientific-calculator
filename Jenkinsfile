@@ -40,6 +40,22 @@ pipeline {
         }
     }
     post {
+        success {
+            emailext(
+                subject: "SUCCESS: Job ${env.JOB_NAME} Build #${env.BUILD_NUMBER}",
+                body: "Build succeeded.\n\nCheck console: ${env.BUILD_URL}",
+                to: "gsomanath2502@gmail.com"
+            )
+        }
+
+        failure {
+            emailext(
+                subject: "FAILURE: Job ${env.JOB_NAME} Build #${env.BUILD_NUMBER}",
+                body: "Build failed.\n\nCheck console: ${env.BUILD_URL}",
+                to: "VeeraSiva.Somanath@iiitb.ac.in"
+            )
+        }
+
         always {
             archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             junit 'target/surefire-reports/*.xml'
