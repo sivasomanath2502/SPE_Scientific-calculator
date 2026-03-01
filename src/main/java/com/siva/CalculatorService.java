@@ -22,7 +22,10 @@ public class CalculatorService {
     }
     public double naturalLog(double x)
     {
-        return 0;
+        if(x<=0){
+            throw new IllegalArgumentException("Input must be positive");
+        }
+        return Math.log(x);
     }
     public double power(double base,double exponent)
     {

@@ -10,12 +10,10 @@ public class CalculatorServiceTest {
     void testSquareRootPositive(){
         assertEquals(4.0,calculator.squareRoot(16));
     }
-
     @Test
     void testSquareRootZero(){
         assertEquals(0,calculator.squareRoot(0));
     }
-
     @Test
     void testSquareRootNegative(){
         assertThrows(IllegalArgumentException.class,()->{
@@ -27,16 +25,35 @@ public class CalculatorServiceTest {
     void testFactorialPositive(){
         assertEquals(120,calculator.factorial(5));
     }
-
     @Test
     void testFactorialZero(){
         assertEquals(1,calculator.factorial(0));
     }
-
     @Test
     void testFactorialNegative(){
         assertThrows(IllegalArgumentException.class,() -> {
             calculator.factorial(-3);
+        });
+    }
+
+    @Test
+    void testNaturalLogPositive(){
+        assertEquals(Math.log(10),calculator.naturalLog(10),0.0001);
+    }
+    @Test
+    void testNaturalLogOne(){
+        assertEquals(0.0,calculator.naturalLog(1),0.0001);
+    }
+    @Test
+    void testNaturalLogZero(){
+        assertThrows(IllegalArgumentException.class,() -> {
+            calculator.naturalLog(0);
+        });
+    }
+    @Test
+    void testNaturalLogNegative(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.naturalLog(-5);
         });
     }
 }
