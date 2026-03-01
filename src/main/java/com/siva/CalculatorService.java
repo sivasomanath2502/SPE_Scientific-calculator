@@ -49,4 +49,23 @@ public class CalculatorService {
         }
         return a / b;
     }
+
+    public int modulus(int a, int b) {
+        if (b == 0) {
+            throw new IllegalArgumentException("Modulus by zero not allowed");
+        }
+        return a % b;
+    }
+
+    public double absolute(double x) {
+        return Math.abs(x);
+    }
+
+    public double exponential(double x) {
+        return Math.exp(x);
+    }
+
+    public double max(double a, double b) {
+        return Math.max(a, b);
+    }
 }

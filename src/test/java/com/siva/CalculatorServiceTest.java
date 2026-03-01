@@ -96,4 +96,31 @@ public class CalculatorServiceTest {
             calculator.divide(5,0);
         });
     }
+
+    @Test
+    void testModulus() {
+        assertEquals(1, calculator.modulus(10, 3));
+    }
+
+    @Test
+    void testModulusByZero() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.modulus(5, 0);
+        });
+    }
+
+    @Test
+    void testAbsolute() {
+        assertEquals(5, calculator.absolute(-5));
+    }
+
+    @Test
+    void testExponential() {
+        assertEquals(Math.exp(2), calculator.exponential(2), 0.0001);
+    }
+
+    @Test
+    void testMax() {
+        assertEquals(10, calculator.max(10, 3));
+    }
 }
