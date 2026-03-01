@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "${env.DOCKER_USER}/scientific-calculator"
+        DOCKER_IMAGE = "sivasomanath2502/scientific-calculator"
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t scientific-calculator .'
-                sh 'docker tag scientific-calculator ${env.DOCKER_USER}/scientific-calculator:latest'
+                sh 'docker tag scientific-calculator sivasomanath2502/scientific-calculator:latest'
             }
         }
 
