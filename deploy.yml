@@ -16,10 +16,11 @@
       command: docker run -d -it --name scientific-calculator sivasomanath2502/scientific-calculator:latest
 
     - name: Check if container is running
-      command: docker ps --filter "name=scientific-calculator" --format "{{.Names}}"
+      shell: docker ps | grep scientific-calculator
       register: container_status
+      ignore_errors: yes
 
     - name: Fail if container not running
       fail:
         msg: "Container failed to start!"
-      when: container_status.stdout == ""
+      when: container_status.rc != 0
