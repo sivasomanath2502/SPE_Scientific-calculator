@@ -50,7 +50,7 @@ pipeline {
     Build Number: ${env.BUILD_NUMBER}
     Console: ${env.BUILD_URL}
     """,
-                to: "VeeraSivaSomanath@iiitb.ac.in"
+                to: "sivasomanath25@gmail.com"
             )
         }
 
@@ -63,7 +63,7 @@ pipeline {
     Build Number: ${env.BUILD_NUMBER}
     Console: ${env.BUILD_URL}
     """,
-                to: "VeeraSivaSomanath@iiitb.ac.in"
+                to: "sivasomanath25@gmail.com"
             )
         }
 
