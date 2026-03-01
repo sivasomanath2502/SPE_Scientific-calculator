@@ -1,36 +1,22 @@
 pipeline {
     agent any
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'mvn clean compile'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                sh 'mvn package -DskipTests'
-            }
-        }
+    environment {
+        DOCKER_IMAGE = "scientific-calculator"
     }
 
-    post {
-        always {
-            junit 'target/surefire-reports/*.xml'
+    stages {
+
+        stage('Build & Test') {
+            steps {
+                sh 'mvn clean verify'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $DOCKER_IMAGE .'
+            }
         }
     }
 }
