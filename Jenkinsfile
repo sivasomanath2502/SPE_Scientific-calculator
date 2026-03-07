@@ -47,5 +47,12 @@ pipeline {
             body: "Build completed successfully: ${env.BUILD_URL}"
         )
     }
+    failure {
+        mail(
+            to: "sivasomanath25@gmail.com",
+            subject: "Build Failed",
+            body: "Build FAILURE: ${env.BUILD_URL}"
+        )
+    }
   }
 }
