@@ -51,7 +51,7 @@ pipeline {
         mail(
             to: "sivasomanath25@gmail.com",
             subject: "Build Failed",
-            body: "Build FAILURE: ${env.BUILD_URL}"
+            body: "Build Failure: ${env.BUILD_URL}"
         )
     }
   }
