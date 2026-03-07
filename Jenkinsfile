@@ -39,41 +39,13 @@ pipeline {
             }
         }
     }
-
     post {
     success {
-        emailext(
-            subject: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body: """
-Build completed successfully.
-
-Project: ${env.JOB_NAME}
-Build Number: ${env.BUILD_NUMBER}
-Console Output: ${env.BUILD_URL}
-
-""",
-            to: 'sivasomanath25@gmail.com'
+        mail(
+            to: "sivasomanath25@gmail.com",
+            subject: "Build Success",
+            body: "Build completed successfully: ${env.BUILD_URL}"
         )
     }
-
-    failure {
-        emailext(
-            subject: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body: """
-Build failed.
-
-Project: ${env.JOB_NAME}
-Build Number: ${env.BUILD_NUMBER}
-Console Output: ${env.BUILD_URL}
-
-""",
-            to: 'sivasomanath25@gmail.com'
-        )
-    }
-
-    always {
-        archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-        junit 'target/surefire-reports/*.xml'
-    		}
-	}
+  }
 }
