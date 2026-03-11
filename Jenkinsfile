@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t scientific-calculator .'
-                sh 'docker tag scientific-calculator sivasomanath2502/scientific-calculator:latest'
+                sh 'docker tag scientific-calculator $DOCKER_IMAGE:latest'
             }
         }
 
